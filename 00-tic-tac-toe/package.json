@@ -1,12 +1,14 @@
 {
   "name": "codelex-tic-tac-toe",
   "version": "1.0.0",
-  "description": "",
+  "description": "We are going to create Tic Tac Toe game. There is already UI prepared, so we must just make it work.",
   "main": "index.js",
   "scripts": {
     "start": "parcel ./static/index.html",
     "test": "jest --env=node --colors test --watch",
-    "prettier": "prettier --write './src/**/*.ts'"
+    "prettier": "prettier --write './src/**/*.ts'",
+    "dev": "parcel ./static/index.html",
+    "build": "parcel build ./static/index.html"
   },
   "author": "",
   "license": "ISC",
@@ -20,5 +22,6 @@
   },
   "dependencies": {
     "lodash": "^4.17.15"
-  }
+  },
+  "keywords": []
 }
