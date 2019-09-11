@@ -159,11 +159,81 @@ function () {
       return this.cells[6];
     }
 
+    if (this.cells[6] === "O" && this.cells[7] === "O" && this.cells[8] === "O" && this.cells[8] !== "-") {
+      return this.cells[6];
+    }
+
+    if (this.cells[0] === "X" && this.cells[4] === "X" && this.cells[8] === "X" && this.cells[8] !== "-") {
+      return this.cells[0];
+    }
+
+    if (this.cells[0] === "O" && this.cells[4] === "O" && this.cells[8] === "O" && this.cells[8] !== "-") {
+      return this.cells[0];
+    }
+
+    if (this.cells[2] === "O" && this.cells[4] === "O" && this.cells[6] === "O" && this.cells[6] !== "-") {
+      return this.cells[2];
+    }
+
+    if (this.cells[2] === "X" && this.cells[4] === "X" && this.cells[6] === "X" && this.cells[6] !== "-") {
+      return this.cells[2];
+    }
+
+    if (this.cells[3] === "X" && this.cells[4] === "X" && this.cells[5] === "X" && this.cells[5] !== "-") {
+      return this.cells[3];
+    }
+
+    if (this.cells[3] === "O" && this.cells[4] === "O" && this.cells[5] === "O" && this.cells[5] !== "-") {
+      return this.cells[3];
+    }
+
+    if (this.cells[0] === "X" && this.cells[3] === "X" && this.cells[6] === "X" && this.cells[0] !== "-") {
+      return this.cells[3];
+    }
+
+    if (this.cells[0] === "O" && this.cells[3] === "O" && this.cells[6] === "O" && this.cells[3] !== "-") {
+      return this.cells[3];
+    }
+
+    if (this.cells[1] === "X" && this.cells[4] === "X" && this.cells[7] === "X" && this.cells[1] !== "-") {
+      return this.cells[1];
+    }
+
+    if (this.cells[1] === "O" && this.cells[4] === "O" && this.cells[7] === "O" && this.cells[1] !== "-") {
+      return this.cells[1];
+    }
+
+    if (this.cells[2] === "X" && this.cells[5] === "X" && this.cells[8] === "X" && this.cells[8] !== "-") {
+      return this.cells[2];
+    }
+
+    if (this.cells[2] === "O" && this.cells[5] === "O" && this.cells[8] === "O" && this.cells[8] !== "-") {
+      return this.cells[2];
+    }
+
+    if (this.isTie() == true) {
+      return "-";
+    }
+
     return "-";
   };
 
   Game.prototype.isTie = function () {
-    return false;
+    var counter = 0;
+    var result = false;
+    this.cells.forEach(function (element) {
+      if (element == "-") {
+        return;
+      } else {
+        counter++;
+      }
+    });
+
+    if (counter == 9) {
+      result = true;
+    }
+
+    return result;
   };
 
   Game.prototype.onClick = function (i) {
@@ -195,7 +265,10 @@ var game = new _Game.Game();
 var info = document.getElementById("info");
 var button = document.getElementById("play-button");
 var board = document.getElementById("board");
-button.addEventListener("click", game.restart);
+button.addEventListener("click", function () {
+  game.restart();
+  draw(game);
+});
 
 var draw = function draw(game) {
   board.innerHTML = "";
@@ -258,7 +331,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54650" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60939" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

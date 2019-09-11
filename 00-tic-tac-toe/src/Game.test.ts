@@ -138,5 +138,25 @@ describe("Tic-Tac-Toe", () => {
       "-", "-", "-"
     ]);
   });
+  it("should return game state draw", () => {
+    const game = new Game();
+
+    game.onClick(0);
+    game.onClick(1);
+    game.onClick(2);
+    game.onClick(3);
+    game.onClick(4);
+    game.onClick(8);
+    game.onClick(7);
+    game.onClick(6);
+    game.onClick(5);
+
+    expect(game.getCells()).toEqual([
+      "X", "O", "X",
+      "O", "X", "X",
+      "O", "X", "O"
+    ]);
+    expect(game.isTie()).toBe(true);
+  })
 
 });
